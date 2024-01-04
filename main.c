@@ -1,19 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "errors.h"
-#include "image.h"
+#include "matrix.h"
 #include "load.h"
+#include "save.h"
 
 int main()
 {
-	char line[MAX_LEN];
-	char *command;
-	fgets(line, sizeof(line), stdin);
-	command = strtok(line, " ");
-	command[strcspn(command, "\n")] = '\0';
-	if (strcmp(command, "LOAD") == 0) {
-		image_load();
+	int allocated = 0;
+	char command[MAX_LEN];
+	struct image img;
+	while (strcmp(command, "EXIT") != 0) {
+		scanf("%s", command);
+		if (strcmp(command, "LOAD") == 0) {
+			image_load(&img, &allocated);
+		}
+		if (strcmp(command, "SAVE") == 0) {
+			save(img, allocated);
+		}
 	}
 	return 0;
 }
