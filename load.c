@@ -49,11 +49,11 @@ void image_load(struct image *img, int *allocated)
 				}
 			}
 		img->matrix = matrix;
-		for (int i = img->x1; i < img->y2; i++) {
+		/*for (int i = img->x1; i < img->y2; i++) {
 				for (int j = img->y2; j < img->x2; j++)
 					printf("%.0f ", img->matrix[i][j].grey);
 				printf("\n");
-			}
+		}*/
 		fclose(in);
 		printf("Loaded %s\n", img_name);
 	}

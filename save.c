@@ -28,8 +28,8 @@ void save(struct image img, int allocated)
 				fprintf(out, "P3\n");
 			fprintf(out, "%d %d\n", img.x2, img.y2);
 			fprintf(out, "%d\n", img.colour_range);
-			for (int i = img.x1; i < img.y2; i++) {
-				for (int j = img.y2; j < img.x2; j++)
+			for (int i = img.y1; i < img.y2; i++) {
+				for (int j = img.x1; j < img.x2; j++)
 					if (img.format == 2 || img.format == 5) {
 						fprintf(out, "%.0f ", img.matrix[i][j].grey);
 					} else {
@@ -48,16 +48,21 @@ void save(struct image img, int allocated)
 				fprintf(out, "P6\n");
 			fprintf(out, "%d %d\n", img.x2, img.y2);
 			fprintf(out, "%d\n", img.colour_range);
-			for (int i = img.y1; i < img.y2; i++) {
-				for (int j = img.x2; j < img.x2; j++)
+			for (int i = img.y1; i < img.y2; i++)
+				for (int j = img.x1; j < img.x2; j++)
 					if (img.format == 5 || img.format == 2) {
-						unsigned char pix = round(img.matrix[i][j].grey);
-						fwrite(&pix, sizeof(unsigned char), 1, out);
+						char pix;
+						pix = img.matrix[i][j].grey;
+						fwrite(&pix, sizeof(char), 1, out);
 					} else {
-						//to implement for colour
+						char pix;
+						pix = img.matrix[i][j].red;
+						fwrite(&pix, sizeof(char), 1, out);
+						pix = img.matrix[i][j].green;
+						fwrite(&pix, sizeof(char), 1, out);
+						pix = img.matrix[i][j].blue;
+						fwrite(&pix, sizeof(char), 1, out);
 					}
-				fprintf(out, "\n");
-			}
 		}
 		fclose(out);
 		printf("Saved %s\n", new_img_name);
