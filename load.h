@@ -1,6 +1,6 @@
 #ifndef LOAD_H_
 #define LOAD_H_
 
-void image_load();
+void image_load(struct image *img, int *allocated);
 
 #endif
