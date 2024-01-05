@@ -4,6 +4,7 @@
 #include "matrix.h"
 #include "load.h"
 #include "select.h"
+#include "histogram.h"
 #include "save.h"
 
 int main()
@@ -34,6 +35,10 @@ int main()
 		}
 		if (strcmp(command, "SELECT") == 0) {
 			select_img(&img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "HISTOGRAM") == 0) {
+			histogram_img(img, allocated);
 			ok = 1;
 		}
 		if (ok == 0)
