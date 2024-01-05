@@ -5,6 +5,8 @@
 #include "load.h"
 #include "select.h"
 #include "histogram.h"
+#include "equalize.h"
+#include "crop.h"
 #include "save.h"
 
 int main()
@@ -19,8 +21,24 @@ int main()
 			image_load(&img, &allocated);
 			ok = 1;
 		}
+		if (strcmp(command, "SELECT") == 0) {
+			select_img(&img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "HISTOGRAM") == 0) {
+			histogram_img(img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "EQUALIZE") == 0) {
+			equalize_img(&img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "CROP") == 0) {
+			crop_img(&img, allocated);
+			ok = 1;
+		}
 		if (strcmp(command, "SAVE") == 0) {
-			save(img, allocated);
+			save_img(img, allocated);
 			ok = 1;
 		}
 		if (strcmp(command, "EXIT") == 0) {
@@ -31,14 +49,6 @@ int main()
 				done_fr = 1;
 				return 0;
 			}
-			ok = 1;
-		}
-		if (strcmp(command, "SELECT") == 0) {
-			select_img(&img, allocated);
-			ok = 1;
-		}
-		if (strcmp(command, "HISTOGRAM") == 0) {
-			histogram_img(img, allocated);
 			ok = 1;
 		}
 		if (ok == 0)

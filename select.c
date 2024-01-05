@@ -13,8 +13,8 @@ void select_img(struct image *img, int allocated)
 		printf("No image loaded\n");
 	} else {
 		if (strstr(line, "ALL")) {
-			img->sel.x1 = img->x1;
-			img->sel.y1 = img->y1;
+			img->sel.x1 = 0;
+			img->sel.y1 = 0;
 			img->sel.x2 = img->x2;
 			img->sel.y2 = img->y2;
 			printf("Selected ALL\n");

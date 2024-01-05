@@ -10,13 +10,13 @@ struct pixel **matrix_mem_alloc(int x, int y)
 	struct pixel **matrix;
 	matrix = calloc(y, sizeof(struct pixel *));
 	if (!matrix) {
-		fprintf(stderr, "Eroare la alocare dinamica.\n");
+		fprintf(stderr, "Dynamic allocation error.\n");
 		exit(-1);
 	}
 	for (int i = 0; i < y; i++) {
 		matrix[i] = calloc(x, sizeof(struct pixel));
 		if (!matrix[i]) {
-			fprintf(stderr, "Eroare la alocare dinamica.\n");
+			fprintf(stderr, "Dynamic allocation error.\n");
 			exit(-1);
 		}
 	}
