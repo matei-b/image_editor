@@ -3,6 +3,10 @@
 
 #define MAX_LEN 100
 
+struct selection {
+	int x1, y1, x2, y2;
+};
+
 struct pixel {
 	float red, green, blue, grey;
 };
@@ -10,6 +14,7 @@ struct pixel {
 struct image {
 	char img_name[MAX_LEN];
 	int format, x1, y1, x2, y2, colour_range;
+	struct selection sel;
 	struct pixel **matrix;
 };
 
