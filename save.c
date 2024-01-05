@@ -8,10 +8,10 @@
 void save_img(struct image img, int allocated)
 {
 	char info[MAX_LEN], *new_img_name;
+	fgets(info, sizeof(info), stdin);
 	if (allocated == 0) {
 		printf("No image loaded\n");
 	} else {
-		fgets(info, sizeof(info), stdin);
 		new_img_name = strtok(info, " ");
 		new_img_name[strcspn(new_img_name, "\n")] = '\0';
 		FILE *out = fopen(new_img_name, "w");

@@ -19,12 +19,12 @@ void image_load(struct image *img, int *allocated)
 		(*allocated) = 1;
 		img->sel.x1 = 0;
 		img->sel.y1 = 0;
-		img->sel.x2 = 0;
-		img->sel.y2 = 0;
 		fgets(buffer, sizeof(buffer), in);
 		buffer[strcspn(buffer, "\n")] = '\0';
 		img->format = buffer[1] - '0';
 		fscanf(in, "%d%d%d\n", &img->x2, &img->y2, &img->colour_range);
+		img->sel.x2 = img->x2;
+		img->sel.y2 = img->y2;
 		matrix = matrix_mem_alloc(img->x2, img->y2);
 		for (int i = 0; i < img->y2; i++)
 			for (int j = 0; j < img->x2; j++) {

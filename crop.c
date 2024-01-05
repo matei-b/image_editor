@@ -29,8 +29,8 @@ void crop_img(struct image *img, int allocated)
 		img->y2 = i + 1;
 		img->sel.x1 = 0;
 		img->sel.y1 = 0;
-		img->sel.x2 = 0;
-		img->sel.y2 = 0;
+		img->sel.x2 = img->x2;
+		img->sel.y2 = img->y2;
 		img->matrix = tmp_matrix;
 		printf("Image cropped\n");
 	}

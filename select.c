@@ -24,21 +24,25 @@ void select_img(struct image *img, int allocated)
 			if (x1 > img->x2 || x2 > img->x2 || y1 > img->y2 || y2 > img->y2) {
 				printf("Invalid set of coordinates\n");
 			} else {
-				if (x1 > x2) {
-					int aux = x1;
-					x1 = x2;
-					x2 = aux;
+				if (x1 < 0 || y1 < 0 || x2 == x1 || y2 == y1) {
+					printf("Invalid set of coordinates\n");
+				} else {
+					if (x1 > x2) {
+						int aux = x1;
+						x1 = x2;
+						x2 = aux;
+					}
+					if (y1 > y2) {
+						int aux = y1;
+						y1 = y2;
+						y2 = aux;
+					}
+					img->sel.x1 = x1;
+					img->sel.y1 = y1;
+					img->sel.x2 = x2;
+					img->sel.y2 = y2;
+					printf("Selected %d %d %d %d\n", img->sel.x1, img->sel.y1, img->sel.x2, img->sel.y2);
 				}
-				if (y1 > y2) {
-					int aux = y1;
-					y1 = y2;
-					y2 = aux;
-				}
-				img->sel.x1 = x1;
-				img->sel.y1 = y1;
-				img->sel.x2 = x2;
-				img->sel.y2 = y2;
-				printf("Selected %d %d %d %d\n", img->sel.x1, img->sel.y1, img->sel.x2, img->sel.y2);
 			}
 		}
 	}

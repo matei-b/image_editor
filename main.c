@@ -14,7 +14,7 @@ int main()
 	int allocated = 0, ok, done_fr = 0;
 	char command[MAX_LEN];
 	struct image img;
-	while (strcmp(command, "EXIT") != 0 || done_fr == 0) {
+	while (!done_fr) {
 		ok = 0;
 		scanf("%s", command);
 		if (strcmp(command, "LOAD") == 0) {
@@ -42,13 +42,11 @@ int main()
 			ok = 1;
 		}
 		if (strcmp(command, "EXIT") == 0) {
-			if (allocated == 0) {
+			if (allocated == 0)
 				printf("No image loaded\n");
-			} else {
+			else 
 				free_matrix(img.y2, img.matrix);
-				done_fr = 1;
-				return 0;
-			}
+			done_fr = 1;
 			ok = 1;
 		}
 		if (ok == 0)
