@@ -90,7 +90,7 @@ void apply_ker(struct image *img, int allocated)
 								temp_matrix[i][j].green = ker_sum(img->matrix, blur, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, blur, i, j, 2);
 							}
-							if (strcmp(par, "GAUSSIAN BLUR") == 0) {
+							if (strcmp(par, "GAUSSIAN_BLUR") == 0) {
 								temp_matrix[i][j].red = ker_sum(img->matrix, gaussian_blur, i, j, 0);
 								temp_matrix[i][j].green = ker_sum(img->matrix, gaussian_blur, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, gaussian_blur, i, j, 2);
