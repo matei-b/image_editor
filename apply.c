@@ -67,11 +67,8 @@ void apply_ker(struct image *img, int allocated)
 					}
 				struct pixel **temp_matrix = matrix_mem_alloc(img->x2,img->y2);
 				for (int i = 0; i < img->y2; i++)
-					for (int j = 0; j < img->x2; j++) {
-						temp_matrix[i][j].red = img->matrix[i][j].red;
-						temp_matrix[i][j].green = img->matrix[i][j].green;
-						temp_matrix[i][j].blue = img->matrix[i][j].blue;
-					}
+					for (int j = 0; j < img->x2; j++)
+						temp_matrix[i][j] = img->matrix[i][j];
 				for (int i = img->sel.y1; i < img->sel.y2; i++)
 					for (int j = img->sel.x1; j < img->sel.x2; j++)
 						if (check_border(i, j, img->x2, img->y2) == 0) {

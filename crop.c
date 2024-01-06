@@ -15,13 +15,7 @@ void crop_img(struct image *img, int allocated)
 			j = -1;
 			for (int k = img->sel.x1; k < img->sel.x2; k++) {
 				j++;
-				if (img->format == 2 || img->format == 5) {
-					tmp_matrix[i][j].grey = img->matrix[l][k].grey;
-				} else {
-					tmp_matrix[i][j].red = img->matrix[l][k].red;
-					tmp_matrix[i][j].green = img->matrix[l][k].green;
-					tmp_matrix[i][j].blue = img->matrix[l][k].blue;
-				}
+				tmp_matrix[i][j] = img->matrix[l][k];
 			}
 		}
 		free_matrix(img->y2, img->matrix);

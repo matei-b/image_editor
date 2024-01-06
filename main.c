@@ -7,6 +7,7 @@
 #include "histogram.h"
 #include "equalize.h"
 #include "apply.h"
+#include "rotate.h"
 #include "crop.h"
 #include "save.h"
 
@@ -34,12 +35,16 @@ int main()
 			equalize_img(&img, allocated);
 			ok = 1;
 		}
-		if (strcmp(command, "APPLY") == 0) {
-			apply_ker(&img, allocated);
+		if (strcmp(command, "ROTATE") == 0) {
+			rotate_img(&img, allocated);
 			ok = 1;
 		}
 		if (strcmp(command, "CROP") == 0) {
 			crop_img(&img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "APPLY") == 0) {
+			apply_ker(&img, allocated);
 			ok = 1;
 		}
 		if (strcmp(command, "SAVE") == 0) {
