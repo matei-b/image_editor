@@ -24,16 +24,11 @@ void rotate_img(struct image *img, int allocated)
 					printf("Unsupported rotation angle\n");
 				} else {
 					int num_rotations;
-					if (angle == -90)
-						num_rotations = 3;
-					if (angle == -180)
-						num_rotations = 2;
-					if (angle == -270)
-						num_rotations = 1;
-					if (angle == -360)
-						num_rotations = 0;
-					if (angle >= 0)
+					if (angle < 0)
+						num_rotations = (angle / 90) + 4;
+					else
 						num_rotations = (angle / 90) % 4;
+					printf("%d\n", num_rotations);
 					if ((img->sel.x2 - img->sel.x1) == (img->sel.y2 - img->sel.y1)) {
 						for (int r = 0; r < num_rotations; r++) {
 							struct pixel **temp_matrix = matrix_mem_alloc(img->x2, img->y2);
@@ -43,8 +38,8 @@ void rotate_img(struct image *img, int allocated)
 							for (int i = img->sel.y1; i < img->sel.y2; i++)
 								for (int j = img->sel.x1; j < img->sel.x2; j++) {
 									int i2 = j + img->sel.y1 - img->sel.x1;
-									int j2 = (img->sel.x2 - 1) - i + img->sel.y1;
-									temp_matrix[i][j] = img->matrix[i2][j2];
+									int j2 = (img->sel.y2 - 1) - i + img->sel.x1;
+									temp_matrix[i2][j2] = img->matrix[i][j];
 								}
 							free_matrix(img->y2, img->matrix);
 							img->matrix = temp_matrix;
