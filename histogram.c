@@ -6,12 +6,9 @@
 #include "save.h"
 #include "histogram.h"
 
-#define NUMBER_NO_ONE_WOULD_THINK_OF 190301239
-
 void histogram_img(struct image img, int allocated)
 {
 	int i = 0, j = 0, nononono = NUMBER_NO_ONE_WOULD_THINK_OF;
-	//stelute binuri
 	char line[MAX_LEN];
 	fgets(line, sizeof(line), stdin);
 	sscanf(line, " %d %d %d\n", &i, &j, &nononono);
@@ -43,7 +40,6 @@ void histogram_img(struct image img, int allocated)
 					if(max_freq < freq_bins[j])
 						max_freq = freq_bins[j];
 				}
-				printf("%d\n", j);
 				for (i = 0; i < j + 1; i++) {
 					num_stars = (int)((freq_bins[i] * x)/max_freq);
 					printf("%d\t|\t", num_stars);

@@ -6,6 +6,7 @@
 #include "select.h"
 #include "histogram.h"
 #include "equalize.h"
+#include "apply.h"
 #include "crop.h"
 #include "save.h"
 
@@ -31,6 +32,10 @@ int main()
 		}
 		if (strcmp(command, "EQUALIZE") == 0) {
 			equalize_img(&img, allocated);
+			ok = 1;
+		}
+		if (strcmp(command, "APPLY") == 0) {
+			apply_ker(&img, allocated);
 			ok = 1;
 		}
 		if (strcmp(command, "CROP") == 0) {
