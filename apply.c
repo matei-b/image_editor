@@ -35,7 +35,7 @@ float ker_sum(struct pixel **matrix, float ker[3][3],
 
 void apply_ker(struct image *img, int allocated)
 {
-	int nononono = NUMBER_NO_ONE_WOULD_THINK_OF, par_ind = 0;
+	int nononono = NUMBER_NO_ONE_WOULD_THINK_OF;
 	char line[MAX_LEN], par[MAX_LEN];
 	char parameters[4][MAX_LEN] = {"EDGE", "BLUR", "SHARPEN", "GAUSSIAN_BLUR"};
 	fgets(line, sizeof(line), stdin);
@@ -45,10 +45,8 @@ void apply_ker(struct image *img, int allocated)
 	} else {
 		int ok = 0;
 		for(int i = 0; i < 4; i++)
-			if(strcmp(parameters[i], par) == 0 && nononono == NUMBER_NO_ONE_WOULD_THINK_OF) {
+			if(strcmp(parameters[i], par) == 0 && nononono == NUMBER_NO_ONE_WOULD_THINK_OF)
 				ok = 1;
-				par_ind = i;
-			}
 		if (ok == 0) {
 			if (nononono == NUMBER_NO_ONE_WOULD_THINK_OF)
 				printf("APPLY parameter invalid\n");
@@ -78,22 +76,22 @@ void apply_ker(struct image *img, int allocated)
 				for (int i = img->sel.y1; i < img->sel.y2; i++)
 					for (int j = img->sel.x1; j < img->sel.x2; j++)
 						if (check_border(i, j, img->x2, img->y2) == 0) {
-							if (par_ind == 0){
+							if (strcmp(par, "EDGE") == 0){
 								temp_matrix[i][j].red = ker_sum(img->matrix, edge, i, j, 0);
 								temp_matrix[i][j].green = ker_sum(img->matrix, edge, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, edge, i, j, 2);
 							}
-							if (par_ind == 1) {
+							if (strcmp(par, "SHARPEN") == 0) {
 								temp_matrix[i][j].red = ker_sum(img->matrix, sharpen, i, j, 0);
 								temp_matrix[i][j].green = ker_sum(img->matrix, sharpen, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, sharpen, i, j, 2);
 							}
-							if (par_ind == 2) {
+							if (strcmp(par, "BLUR") == 0) {
 								temp_matrix[i][j].red = ker_sum(img->matrix, blur, i, j, 0);
 								temp_matrix[i][j].green = ker_sum(img->matrix, blur, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, blur, i, j, 2);
 							}
-							if (par_ind == 3) {
+							if (strcmp(par, "GAUSSIAN BLUR") == 0) {
 								temp_matrix[i][j].red = ker_sum(img->matrix, gaussian_blur, i, j, 0);
 								temp_matrix[i][j].green = ker_sum(img->matrix, gaussian_blur, i, j, 1);
 								temp_matrix[i][j].blue = ker_sum(img->matrix, gaussian_blur, i, j, 2);
