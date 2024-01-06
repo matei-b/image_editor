@@ -13,7 +13,7 @@
 int main()
 {
 	int allocated = 0, ok, done_fr = 0;
-	char command[MAX_LEN];
+	char command[MAX_LEN], ignore[MAX_LEN];
 	struct image img;
 	while (!done_fr) {
 		ok = 0;
@@ -54,8 +54,10 @@ int main()
 			done_fr = 1;
 			ok = 1;
 		}
-		if (ok == 0)
+		if (ok == 0) {
 			printf("Invalid command\n");
+			fgets(ignore, sizeof(ignore), stdin);
+		}
 	}
 	return 0;
 }
