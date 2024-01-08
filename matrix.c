@@ -1,3 +1,5 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,6 +7,8 @@
 
 #define MAX_LEN 100
 
+//alocarea de memorie pentru matricea de valori
+//ale pixelilor
 struct pixel **matrix_mem_alloc(int x, int y)
 {
 	struct pixel **matrix;

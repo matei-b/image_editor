@@ -1,0 +1,47 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
+Tema 3 a presupus realizarea unui editor de imagine cu o varietate de functii.
+Am inceput dezvoltarea aplicatiei cu functiile de incarcare si salvare a
+imaginilor, lucru care mi-a facilitat verificarea ulterioara a fiecarei
+componente a programului.
+
+1. LOAD:
+Am identificat structura specifica a tipurilor de fisiere cu care lucram,
+si m-am documentat asupra prelucrarii informatiei pastrate in format binar.
+Citirea fisierelor cu continut ASCII a fost intuitiva, in timp ce cea binara
+a presupus folosirea unei metode de "traducere" intre byte-i inlantuiti
+si tipul de date folosit la operatii (float).
+
+2. SELECT:
+Pentru pastrarea informatiei relevante fiecarei imagini am folosit o structura
+in care am retinut formatul, dimensiunile si spectrul de culoare al imaginii,
+cat si selectia curenta. Functia SELECT doar actualiza valorile selectiei
+din structura si se asigura (cum fac si celelate functii) de corectitudinea
+parametrilor intodusi.
+
+3. HISTOGRAM:
+Am realizat o histograma a valorilor pixelilor dintr-o imagine data,
+cu un numar fix de intervale si o valoare maxima a culmii de reprezentare 
+a valorilor. 
+
+4. EQUALIZE:
+Funcita realizeza o corectare a imaginilor cu o expunere nepotrivita, folosind
+histograma (vectorul de frecventa al valorilor pixelilor din imagine).
+
+5. ROTATE:
+Realizeaza rotirea imaginii la un numar dat de grade (multipli ai lui 90),
+folosindu-se doar de rotirea la 90 de grade, pe care o realizez de valoarea
+unghiului dat modulo 90.
+
+6. APPLY:
+Aplica asupra imaginii unul din cele 4 efecte (EDGE, SHARPEN, BLUR, GAUSSIAN_BLUR).
+Aceasta operatie se folosete de matricea kernel corespunzatoare
+fiecarei transformari.
+
+7. SAVE:
+Operatia SAVE face transformarile necesare intre diferitele tipuri de formate
+ale fisierelor folosindu-se de acelasi truc de "traducere" explicat si 
+la functia LOAD.
+
+8. EXIT:
+Face ultima eliberare necesara de memorie si opreste rularea programului.

@@ -1,3 +1,5 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
 #ifndef MATRIX_H_
 #define MATRIX_H_
 
@@ -12,7 +14,6 @@ struct pixel {
 };
 
 struct image {
-	char img_name[MAX_LEN];
 	int format, x2, y2, colour_range;
 	struct selection sel;
 	struct pixel **matrix;

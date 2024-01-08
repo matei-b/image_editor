@@ -1,3 +1,5 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
 #ifndef ROTATE_H_
 #define ROTATE_H_
 

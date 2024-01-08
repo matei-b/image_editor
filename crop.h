@@ -1,3 +1,5 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
 #ifndef CROP_H_
 #define CROP_H_
 

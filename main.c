@@ -1,3 +1,5 @@
+// Copyright 2023-2024 Balan Matei-Cristian (matei.balan@stud.acs.upb.ro)
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,12 +8,19 @@
 #include "select.h"
 #include "histogram.h"
 #include "equalize.h"
-#include "apply.h"
 #include "rotate.h"
 #include "crop.h"
+#include "apply.h"
 #include "save.h"
 
-int main()
+//folosesc variabila allocated ca sa vad daca am
+//memorie alocata de load, iar sirul ignore
+//pentru a ma asigura ca ignor orice parametru
+//al unei comenzi gresite
+//done_fr doar imi spune ca am facut apel
+//catre comanda EXIT, iar sarcinile sunt
+//done F(or)R(eal)
+int main(void)
 {
 	int allocated = 0, ok, done_fr = 0;
 	char command[MAX_LEN], ignore[MAX_LEN];
@@ -54,7 +63,7 @@ int main()
 		if (strcmp(command, "EXIT") == 0) {
 			if (allocated == 0)
 				printf("No image loaded\n");
-			else 
+			else
 				free_matrix(img.y2, img.matrix);
 			done_fr = 1;
 			ok = 1;
